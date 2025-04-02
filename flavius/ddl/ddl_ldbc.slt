@@ -1,0 +1,62 @@
+CREATE VERTEX Person (creationDate timestamp, id BIGINT NOT NULL, firstName VARCHAR, lastName VARCHAR, gender VARCHAR, birthday VARCHAR, locationIP VARCHAR, browserUsed VARCHAR, speaks VARCHAR, email VARCHAR) PRIMARY KEY id;
+
+CREATE VERTEX Forum (creationDate timestamp, id BIGINT NOT NULL, title VARCHAR) PRIMARY KEY id;
+
+CREATE VERTEX Tag (id BIGINT NOT NULL, name VARCHAR, url VARCHAR) PRIMARY KEY id;
+
+CREATE VERTEX TagClass (id BIGINT NOT NULL, name VARCHAR, url VARCHAR) PRIMARY KEY id;
+
+CREATE VERTEX Place (id BIGINT NOT NULL, name VARCHAR, url VARCHAR, type VARCHAR) PRIMARY KEY id;
+
+CREATE VERTEX Organisation (id BIGINT NOT NULL, name VARCHAR, url VARCHAR, type VARCHAR) PRIMARY KEY id;
+
+CREATE VERTEX Comment (creationDate timestamp, id BIGINT NOT NULL, locationIP VARCHAR, browserUsed VARCHAR, content VARCHAR, length BIGINT) PRIMARY KEY id;
+
+CREATE VERTEX Post (creationDate timestamp, id BIGINT NOT NULL, imageFile VARCHAR, locationIP VARCHAR, browserUsed VARCHAR, language VARCHAR, content VARCHAR, length BIGINT) PRIMARY KEY id;
+
+# this must be UNDIRECTED edge
+CREATE DIRECTED EDGE knows (FROM Person TO Person, creationDate timestamp);
+
+CREATE DIRECTED EDGE hasModerator (FROM Forum TO Person, creationDate timestamp);
+
+CREATE DIRECTED EDGE hasInterest (FROM Person TO Tag, creationDate timestamp);
+
+CREATE DIRECTED EDGE containerOf (FROM Forum TO Post, creationDate timestamp);
+
+CREATE DIRECTED EDGE commentHasCreator (FROM Comment TO Person, creationDate timestamp);
+
+CREATE DIRECTED EDGE postHasCreator (FROM Post TO Person, creationDate timestamp);
+
+CREATE DIRECTED EDGE hasMember (FROM Forum TO Person, creationDate timestamp);
+
+CREATE DIRECTED EDGE forumHasTag (FROM Forum TO Tag, creationDate timestamp);
+
+CREATE DIRECTED EDGE commentHasTag (FROM Comment TO Tag, creationDate timestamp);
+
+CREATE DIRECTED EDGE postHasTag (FROM Post TO Tag, creationDate timestamp);
+
+CREATE DIRECTED EDGE hasType (FROM Tag TO TagClass);
+
+CREATE DIRECTED EDGE commentIsLocatedIn (FROM Comment TO Place, creationDate timestamp);
+
+CREATE DIRECTED EDGE postIsLocatedIn (FROM Post TO Place, creationDate timestamp);
+
+CREATE DIRECTED EDGE organisationIsLocatedIn (FROM Organisation TO Place);
+
+CREATE DIRECTED EDGE personIsLocatedIn (FROM Person TO Place, creationDate timestamp);
+
+CREATE DIRECTED EDGE isPartOf (FROM Place TO Place);
+
+CREATE DIRECTED EDGE isSubclassOf (FROM TagClass TO TagClass);
+
+CREATE DIRECTED EDGE likesComment (FROM Person TO Comment, creationDate timestamp);
+
+CREATE DIRECTED EDGE likesPost (FROM Person TO Post, creationDate timestamp);
+
+CREATE DIRECTED EDGE replyOfComment (FROM Comment TO Comment, creationDate timestamp);
+
+CREATE DIRECTED EDGE replyOfPost (FROM Comment TO Post, creationDate timestamp);
+
+CREATE DIRECTED EDGE studyAt (FROM Person TO Organisation, creationDate timestamp, classYear BIGINT);
+
+CREATE DIRECTED EDGE workAt (FROM Person TO Organisation, creationDate timestamp, workFrom BIGINT);

@@ -1,0 +1,6 @@
+[submodule "deps/ldbc_snb_datagen_spark"]
+	path = deps/ldbc_snb_datagen_spark
+	url = git@github.com:ldbc/ldbc_snb_datagen_spark.git
+[submodule "flavius/deps/gitops-dev"]
+	path = flavius/deps/gitops-dev
+	url = git@github.com:Kasma-Inc/gitops-dev.git

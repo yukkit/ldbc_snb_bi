@@ -34,3 +34,5 @@ parameters-sf*.*
 __pycache__/
 *.bkp
 *.zip
+
+ldbc_snb_bi_sf1

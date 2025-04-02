@@ -64,6 +64,7 @@ docker run --rm \
     --id-type=INTEGER \
     --ignore-empty-strings=true \
     --bad-tolerance=0 \
+    --verbose \
     --nodes=Place="/headers/static/Place${NEO4J_HEADER_EXTENSION}$(${FIND_COMMAND} ${NEO4J_CSV_DIR}/initial_snapshot/static/Place -type f -name ${NEO4J_PART_FIND_PATTERN} -printf ',/import/initial_snapshot/static/Place/%f')" \
     --nodes=Organisation="/headers/static/Organisation${NEO4J_HEADER_EXTENSION}$(${FIND_COMMAND} ${NEO4J_CSV_DIR}/initial_snapshot/static/Organisation -type f -name ${NEO4J_PART_FIND_PATTERN} -printf ',/import/initial_snapshot/static/Organisation/%f')" \
     --nodes=TagClass="/headers/static/TagClass${NEO4J_HEADER_EXTENSION}$(${FIND_COMMAND} ${NEO4J_CSV_DIR}/initial_snapshot/static/TagClass -type f -name ${NEO4J_PART_FIND_PATTERN} -printf ',/import/initial_snapshot/static/TagClass/%f')" \
