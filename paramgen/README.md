@@ -14,8 +14,8 @@ The paramgen implements [parameter curation](https://research.vu.nl/en/publicati
 We assume that the Datagen project is built and the `${LDBC_SNB_DATAGEN_MAX_MEM}`, `${LDBC_SNB_DATAGEN_JAR}` environment variables are set correctly.
 
     ```bash
-    export SF=desired_scale_factor
-    export LDBC_SNB_DATAGEN_MAX_MEM=available_memory
+    export SF=1
+    export LDBC_SNB_DATAGEN_MAX_MEM=64g
     export LDBC_SNB_DATAGEN_JAR=$(sbt -batch -error 'print assembly / assemblyOutputPath')
     ```
 

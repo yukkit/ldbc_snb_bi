@@ -1,4 +1,4 @@
-LOAD CSV FROM 'file:///inserts/dynamic/Forum_hasMember_Person/' + $batch + '/' + $csv_file AS row FIELDTERMINATOR '|'
+LOAD CSV FROM $csv_file AS row FIELDTERMINATOR '|'
 WITH
   datetime(row[0]) AS creationDate,
   toInteger(row[1]) AS forumId,
