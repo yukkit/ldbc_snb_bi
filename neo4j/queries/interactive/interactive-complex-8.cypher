@@ -16,8 +16,8 @@ commentId ASC
 LIMIT 20
 
 // Started streaming 20 records after 16 ms and completed after 174 ms.
-// ready to start consuming query after 281 ms, results consumed after another 144 ms
-// cached: ready to start consuming query after 2 ms, results consumed after another 25 ms
+// ready to start consuming query after 952 ms, results consumed after another 170 ms
+// ready to start consuming query after 3 ms, results consumed after another 22 ms
 MATCH (start:Person { id: 10995116281240 })<-[:HAS_CREATOR]-(:Message)<-[:REPLY_OF]-(comment:Comment)-[:HAS_CREATOR]->(person:Person)
 RETURN
 person.id AS personId,

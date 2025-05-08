@@ -6,7 +6,7 @@ WITH tag,
 
 
 CASE
- WHEN cast('2010-03-01T08:43:38.292000000Z' AS timestamp) <= post.creationDate < cast('2010-12-01T08:43:38.292000000Z' AS timestamp) THEN 1
+ WHEN cast('2010-03-01T08:43:38.292000000Z' AS timestamp) <= post.creationDate AND post.creationDate < cast('2010-12-01T08:43:38.292000000Z' AS timestamp) THEN 1
 ELSE 0
 END AS valid,
 

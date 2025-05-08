@@ -25,6 +25,10 @@ r.creationDate AS friendshipCreationDate
 friendshipCreationDate DESC,
 toInteger(personId) ASC
 
+MATCH (n:Person { id: 37383395391076 })-[r:KNOWS]-(friend)
+RETURN
+count(n), count(r), count(friend);
+
 MATCH (n:Person )-[r:KNOWS]-(friend)
 RETURN
 n.id,
