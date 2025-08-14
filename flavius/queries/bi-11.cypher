@@ -1,11 +1,4 @@
 // Q11. Friend triangles
-/*
-:params {
-  country: 'India',
-  startDate: datetime('2012-09-29'),
-  endDate: datetime('2013-01-01')
-}
-*/
 MATCH (a:Person)-[:personIsLocatedIn]->(:Place { type: 'City' })-[:isPartOf]->(country:Place { type: 'Country', name: 'India' }),
 (a)-[k1:knows]-(b:Person)
 WHERE a.id < b.id

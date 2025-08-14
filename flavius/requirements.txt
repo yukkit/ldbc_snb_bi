@@ -1,0 +1,3 @@
+matplotlib
+seaborn
+neo4j

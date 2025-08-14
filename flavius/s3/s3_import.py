@@ -210,7 +210,7 @@ class ResultRecorder:
     def record_timing(self, phase: str, duration: float):
         """记录时间指标"""
         with open(self.output_dir / "timings.csv", "a") as f:
-            f.write(f"Neo4j|{self.config.sf}|{phase}||{duration:.6f}\n")
+            f.write(f"Flavius|{self.config.sf}|{phase}||{duration:.6f}\n")
 
     def record_benchmark(self, total_duration: float):
         """记录总耗时"""
@@ -340,7 +340,7 @@ def main():
     config = LoaderConfig(args)
 
     # 初始化组件
-    driver = flavius.GraphDatabase.driver(config.db_config["flavius_url"])
+    driver = flavius.GraphDatabase.driver(config.db_config["flavius_url"], timeout=240)
     driver.verify_connectivity()
 
     recorder = ResultRecorder(config)

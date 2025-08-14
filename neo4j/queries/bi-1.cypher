@@ -4,7 +4,7 @@
 */
 MATCH (message:Message)
 WHERE message.creationDate < datetime('2011-12-01T00:00:00.000')
-WITH count(message) AS totalMessageCountInt // this should be a subquery once Cypher supports it
+WITH count(message) AS totalMessageCountInt 
 WITH toFloat(totalMessageCountInt) AS totalMessageCount
 MATCH (message:Message)
 WHERE message.creationDate < datetime('2011-12-01T00:00:00.000')
