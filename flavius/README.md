@@ -107,5 +107,5 @@ env LOG_INFO=debug python3 s3/query_benchmark.py \
 ```bash
 env LOG_INFO=debug python3 s3/plot_benchmark_result.py \
 --timings output/query-sf${SF}/timings.csv \
---scale-factor ${SF} \
+--scale-factor ${SF}
 ```
