@@ -100,8 +100,8 @@ class BaseDriverAdapter(metaclass=abc.ABCMeta):
 
 class FlaviusDriverAdapter(BaseDriverAdapter):
     """Flavius 驱动适配器"""
-    def __init__(self, url: str, timeout: int = 2400):
-        self.driver = flavius.GraphDatabase.driver(url, timeout=timeout)
+    def __init__(self, url: str, user: str, password: str, timeout: int = 2400):
+        self.driver = flavius.GraphDatabase.driver(url, username=user, password=password, timeout=timeout)
         self.driver.verify_connectivity()
 
     def execute_query(
@@ -238,7 +238,7 @@ def create_driver_adapter(args: argparse.Namespace) -> BaseDriverAdapter:
             graph=args.graph
         )
     else:
-        return FlaviusDriverAdapter(url)
+        return FlaviusDriverAdapter(url, user=args.user, password=args.password)
 
 
 def main():
