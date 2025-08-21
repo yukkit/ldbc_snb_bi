@@ -66,15 +66,17 @@ aws s3 cp ${OUTPUT_DATA_DIR}/graphs/csv/bi/composite-projected-fk/ s3://${BUCKET
 ## Loading the data
 
 ```bash
+cd flavius/
+export SF=10
 export NS=ldbc
 export GRAPH=graph
-export FLAVIUS_URL="http://localhost:39999"
+export FLAVIUS_URL="http://fe-0:30000"
 
 export AWS_ACCESS_KEY_ID=xxx
 export AWS_SECRET_ACCESS_KEY=xxx
 export AWS_DEFAULT_REGION=ap-east-1
 export AWS_ENDPOINT_URL=
-export BUCKET_NAME=${BUCKET_NAME:-"kasma-fileio-ci"}
+export BUCKET_NAME=${BUCKET_NAME:-"flavius-demo"}
 
 env LOG_INFO=debug python3 s3/s3_import.py \
 --flavius-url ${FLAVIUS_URL} \
@@ -91,6 +93,12 @@ env LOG_INFO=debug python3 s3/s3_import.py \
 ### 执行benchmark
 
 ```bash
+cd flavius/
+export SF=10
+export NS=ldbc
+export GRAPH=graph
+export FLAVIUS_URL="http://fe-0:30000"
+
 # 会在 output/query-sf${SF} 目录下生成结果
 # 包括 timings.csv、benchmark.csv 和 stats.csv
 env LOG_INFO=debug python3 s3/query_benchmark.py \
@@ -99,7 +107,10 @@ env LOG_INFO=debug python3 s3/query_benchmark.py \
 --graph ${GRAPH} \
 --scale-factor ${SF} \
 --query-dir "$(pwd)"/queries/ \
---repeat 3
+--parallel \
+--max-workers 12 \
+--repeat 3 \
+--loop 1
 ```
 
 ### 绘制结果
