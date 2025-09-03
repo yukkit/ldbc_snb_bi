@@ -180,6 +180,7 @@ class QueryRunner:
     def _execute_single_query(self, query_name: str, query_str: str) -> float:
         """执行单个查询并记录结果"""
         try:
+            logger.info("Starting query %s", query_name)
             start_time = time.time()
             self.adapter.execute_query(
                 query_str,
